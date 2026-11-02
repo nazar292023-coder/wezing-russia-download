@@ -1,1 +1,412 @@
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#09090b">
+<title>WEZING RUSSIA</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+ background:#09090b;color:white;font-family:Arial,sans-serif;
+ min-height:100vh;padding-bottom:35px;overflow-x:hidden;position:relative
+}
+
+body:before{
+ content:"";position:fixed;inset:0;z-index:-2;
+ background:
+ radial-gradient(circle at 15% 15%,#59000035,transparent 35%),
+ radial-gradient(circle at 85% 75%,#9c6b2025,transparent 35%);
+ animation:backgroundMove 9s ease-in-out infinite alternate
+}
+
+@keyframes backgroundMove{
+ from{transform:scale(1)}
+ to{transform:scale(1.15) translateY(-15px)}
+}
+
+#particles{
+ position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden
+}
+
+.particle{
+ position:absolute;bottom:-15px;width:4px;height:4px;border-radius:50%;
+ background:#e5b638;box-shadow:0 0 12px #e5b638;
+ animation:floatUp linear forwards
+}
+
+@keyframes floatUp{
+ to{transform:translateY(-110vh) translateX(35px);opacity:0}
+}
+
+header{
+ padding:25px 20px;text-align:center;
+ background:linear-gradient(135deg,#350000,#101010 75%);
+ border-bottom:1px solid #7d1717;position:relative;overflow:hidden
+}
+
+header:after{
+ content:"";position:absolute;top:-100%;left:-40%;width:30%;height:300%;
+ background:#ffffff12;transform:rotate(25deg);animation:shine 6s infinite
+}
+
+@keyframes shine{
+ 0%,65%{left:-50%}
+ 100%{left:140%}
+}
+
+.logo{
+ width:105px;height:105px;margin:auto;border-radius:25px;
+ background:#8d0808;display:flex;align-items:center;
+ justify-content:center;font-size:58px;border:2px solid #d9a52c;
+ animation:logoGlow 3s infinite alternate
+}
+
+@keyframes logoGlow{
+ to{box-shadow:0 0 35px #e5b63899}
+}
+
+h1{
+ font-size:26px;letter-spacing:2px;margin-top:14px;
+ text-shadow:0 0 15px #a50000
+}
+
+.gold{color:#e5b638}
+.subtitle{color:#aaa;font-size:12px;margin-top:7px}
+
+.container{
+ max-width:480px;margin:auto;padding:18px;
+ position:relative;z-index:1
+}
+
+.card{
+ background:linear-gradient(145deg,#1c1c20,#141416);
+ border:1px solid #393939;border-radius:16px;padding:18px;
+ margin-bottom:15px;box-shadow:0 5px 18px #0008;
+ animation:cardAppear .7s ease both;transition:.25s
+}
+
+.card:hover{
+ transform:translateY(-4px);border-color:#a56d26;
+ box-shadow:0 10px 25px #8d080833
+}
+
+@keyframes cardAppear{
+ from{opacity:0;transform:translateY(20px)}
+ to{opacity:1;transform:translateY(0)}
+}
+
+.card-title{font-size:13px;color:#aaa;margin-bottom:13px}
+
+.server{
+ display:flex;justify-content:space-between;align-items:center
+}
+
+.server-name{font-size:21px;font-weight:bold}
+.online{color:#e5b638;font-size:12px}
+.status{color:#aaa;font-size:12px;margin-top:8px}
+
+.bonus{
+ text-align:center;
+ background:linear-gradient(135deg,#321000,#1a1710);
+ border:1px solid #9c6b20
+}
+
+.bonus h2{
+ font-size:28px;color:#f2c34e;margin:10px 0;
+ text-shadow:0 0 15px #f2c34e66;
+ animation:goldGlow 2s infinite alternate
+}
+
+@keyframes goldGlow{
+ to{text-shadow:0 0 25px #f2c34e}
+}
+
+.bonus p{font-size:12px;color:#ccc;line-height:1.6}
+
+input{
+ width:100%;padding:15px;border-radius:10px;
+ background:#0d0d0f;border:1px solid #444;
+ color:white;font-size:16px;outline:none;transition:.3s
+}
+
+input:focus{
+ border-color:#c99b2d;box-shadow:0 0 12px #c99b2d55
+}
+
+.play,.secondary{
+ display:block;width:100%;padding:16px;margin-top:13px;
+ border:0;border-radius:11px;
+ background:linear-gradient(90deg,#a50000,#e02727);
+ color:white;font-size:16px;font-weight:bold;
+ letter-spacing:1px;cursor:pointer;text-align:center;
+ text-decoration:none;transition:.2s
+}
+
+.play{animation:pulse 2s infinite}
+
+@keyframes pulse{
+ 0%{box-shadow:0 0 0 0 #e0272766}
+ 70%{box-shadow:0 0 0 12px #e0272700}
+ 100%{box-shadow:0 0 0 0 #e0272700}
+}
+
+.secondary{background:#242426;border:1px solid #555}
+
+button:active{
+ transform:scale(.96);filter:brightness(1.3)
+}
+
+.news-item{padding:12px 0;border-bottom:1px solid #333}
+.news-item:last-child{border:0}
+.news-item b{color:#e5b638}
+
+.news-item p{
+ font-size:13px;color:#aaa;margin-top:5px;line-height:1.5
+}
+
+.guide{
+ background:linear-gradient(135deg,#261010,#171719);
+ border:1px solid #8d2929
+}
+
+.guide h3{color:#e5b638;margin-bottom:10px;font-size:15px}
+
+.feature{
+ display:flex;gap:13px;align-items:center;
+ padding:12px 0;border-bottom:1px solid #333
+}
+
+.feature:last-child{border:0}
+.feature-icon{font-size:27px;transition:transform .3s}
+
+.feature:hover .feature-icon{
+ transform:scale(1.25) rotate(-8deg)
+}
+
+.feature p{color:#bbb;font-size:13px;line-height:1.6}
+.feature b{color:white}
+
+.info-text{font-size:13px;color:#aaa;line-height:1.9}
+
+footer{text-align:center;color:#666;font-size:11px;padding:18px}
+
+#offlineScreen{
+ position:fixed;inset:0;z-index:99999;
+ background:#09090b;color:white;
+ display:none;align-items:center;justify-content:center;
+ flex-direction:column;text-align:center;padding:25px;
+ font-family:Arial,sans-serif
+}
+
+.offline-icon{
+ font-size:58px;margin-bottom:18px;
+ animation:offlinePulse 2s infinite
+}
+
+@keyframes offlinePulse{
+ 50%{transform:scale(1.12);opacity:.65}
+}
+
+#offlineScreen h2{
+ color:#e5b638;margin-bottom:12px;font-size:23px
+}
+
+#offlineScreen p{
+ color:#aaa;font-size:14px;line-height:1.7
+}
+
+.offline-status{
+ color:#e5b638!important;margin-top:18px
+}
+</style>
+</head>
+
+<body>
+
+<div id="offlineScreen">
+ <div class="offline-icon">📡</div>
+ <h2>НЕТ ИНТЕРНЕТА</h2>
+ <p>
+  Для работы WEZING RUSSIA необходимо подключение к интернету.
+  <br>Проверь Wi-Fi или мобильную сеть.
+ </p>
+ <p class="offline-status">Ожидание подключения...</p>
+</div>
+
+<div id="particles"></div>
+
+<header>
+ <div class="logo">🐻</div>
+ <h1>WEZING <span class="gold">RUSSIA</span></h1>
+ <p class="subtitle">ТВОЯ ИГРА. ТВОЯ ИСТОРИЯ.</p>
+</header>
+
+<main class="container">
+
+<section class="card server">
+ <div>
+  <div class="card-title">ИГРОВОЙ СЕРВЕР</div>
+  <div class="server-name">Москва</div>
+  <div class="subtitle">SA-MP 0.3.7</div>
+  <div class="status" id="serverStatus">Статус: не проверен</div>
+  <div class="status" id="playersOnline">Игроки: данные недоступны</div>
+ </div>
+ <div class="online">● WEZING</div>
+</section>
+
+<section class="card bonus">
+ <div class="card-title">🎁 СТАРТОВЫЙ БОНУС</div>
+ <h2>70 000 000 ₽</h2>
+ <p>Бонус новым игрокам при запуске проекта.</p>
+ <p>Фактическая выдача производится сервером.</p>
+</section>
+
+<section class="card">
+ <div class="card-title">👤 ИГРОВОЙ НИКНЕЙМ</div>
+ <input id="nickname" maxlength="24"
+ placeholder="Введите ваш никнейм">
+ <button class="play" onclick="playGame()">ИГРАТЬ</button>
+ <p id="message"
+ style="color:#e5b638;font-size:12px;margin-top:12px;text-align:center;line-height:1.5">
+ </p>
+</section>
+
+<section class="card guide">
+ <h3>🐻 МИР WEZING RUSSIA</h3>
+
+ <div class="feature">
+  <span class="feature-icon">🚘</span>
+  <p><b>Игровой мир</b><br>
+  Исследуй сервер и развивай своего персонажа.</p>
+ </div>
+
+ <div class="feature">
+  <span class="feature-icon">💰</span>
+  <p><b>Экономика</b><br>
+  Создавай собственную игровую историю.</p>
+ </div>
+
+ <div class="feature">
+  <span class="feature-icon">👑</span>
+  <p><b>Твой путь</b><br>
+  Начни приключение на сервере Москва.</p>
+ </div>
+
+ <div class="feature">
+  <span class="feature-icon">🎁</span>
+  <p><b>Награды</b><br>
+  Следи за новостями и событиями проекта.</p>
+ </div>
+</section>
+
+<section class="card">
+ <div class="card-title">📰 НОВОСТИ ПРОЕКТА</div>
+
+ <div class="news-item">
+  <b>WEZING RUSSIA</b>
+  <p>Добро пожаловать в наш игровой проект!</p>
+ </div>
+
+ <div class="news-item">
+  <b>СТАРТОВЫЙ БОНУС</b>
+  <p>Для новых игроков запланирован бонус 70 миллионов.</p>
+ </div>
+</section>
+
+<a class="secondary"
+ href="https://t.me/WezingRussia_crmp"
+ target="_blank" rel="noopener">
+ ✈ НАШ TELEGRAM
+</a>
+
+<section class="card" style="margin-top:15px">
+ <div class="card-title">ИНФОРМАЦИЯ О ПРОЕКТЕ</div>
+ <p class="info-text">
+  Проект: WEZING RUSSIA<br>
+  Сервер: Москва<br>
+  IP: 82.47.171.239:7895<br>
+  Версия: SA-MP 0.3.7
+ </p>
+</section>
+
+</main>
+
+<footer>WEZING RUSSIA © 2026</footer>
+
+<script>
+const nicknameInput=document.getElementById("nickname");
+const message=document.getElementById("message");
+const offlineScreen=document.getElementById("offlineScreen");
+
+try{
+ nicknameInput.value=localStorage.getItem("wezing_nickname")||"";
+}catch(e){}
+
+function checkInternet(){
+ const online=navigator.onLine;
+
+ offlineScreen.style.display=online?"none":"flex";
+
+ document.querySelector("header").style.display=online?"":"none";
+ document.querySelector("main").style.display=online?"":"none";
+ document.querySelector("footer").style.display=online?"":"none";
+
+ document.getElementById("particles").style.display=online?"":"none";
+}
+
+window.addEventListener("online",checkInternet);
+window.addEventListener("offline",checkInternet);
+checkInternet();
+
+function playGame(){
+ if(!navigator.onLine){
+  checkInternet();
+  return;
+ }
+
+ const nick=nicknameInput.value.trim();
+
+ if(!/^[A-Za-zА-Яа-яЁё0-9_]{3,24}$/.test(nick)){
+  message.textContent="Введите ник: от 3 до 24 символов.";
+  return;
+ }
+
+ try{
+  localStorage.setItem("wezing_nickname",nick);
+ }catch(e){}
+
+ message.textContent=
+  "Ник сохранён! Подключение к SA-MP Android добавим следующим этапом.";
+}
+
+function createParticle(){
+ if(!navigator.onLine)return;
+
+ const container=document.getElementById("particles");
+ if(!container)return;
+
+ const particle=document.createElement("span");
+ particle.className="particle";
+ particle.style.left=Math.random()*100+"%";
+ particle.style.animationDuration=(5+Math.random()*6)+"s";
+ particle.style.opacity=(0.3+Math.random()*0.7);
+
+ const size=2+Math.random()*4;
+ particle.style.width=size+"px";
+ particle.style.height=size+"px";
+
+ container.appendChild(particle);
+ setTimeout(()=>particle.remove(),12000);
+}
+
+setInterval(createParticle,450);
+</script>
+
+</body>
+</html>
+
+
